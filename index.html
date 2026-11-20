@@ -368,6 +368,17 @@
   .cd-done{margin:26px 0;font:800 22px var(--display);color:var(--gold)}.cd-done[hidden]{display:none}
   .launch-sub{margin-top:6px}
   @media(max-width:400px){.cd-box{min-width:0;flex:1;padding-inline:4px}.cd-box span{letter-spacing:.08em}}
+
+  /* lançamento · tom quente e claro, para não repetir o escuro do topo */
+  .launch{background:linear-gradient(180deg,#F6E7C6 0%,#F0DBAE 100%);color:var(--ink)}
+  .launch::before{background:radial-gradient(ellipse,rgba(232,161,60,.28),transparent 68%)}
+  .launch .eyebrow{color:#8A5A12}
+  .launch h2 .gold{color:var(--goldDeep)}
+  .launch-lead{color:#3A3D43}
+  .launch-date{background:var(--ink);border-color:var(--ink);color:var(--gold)}
+  .cd-box{border-color:rgba(21,24,29,.9);box-shadow:0 20px 30px -20px rgba(80,50,5,.55),inset 0 1px 0 rgba(255,255,255,.06)}
+  .cd-done{color:var(--goldDeep)}
+  .launch{padding-bottom:clamp(56px,6.5vw,84px)}.launch .countdown{margin-bottom:0}
   </style>
 </head>
 <body>
@@ -414,12 +425,7 @@
 
     <div class="trustbar"><div class="shell"><span class="trust-item"><svg><use href="#i-bubble"/></svg> Qualificação com IA</span><span class="trust-item"><svg><use href="#i-calendar"/></svg> Agenda e prioridades</span><span class="trust-item"><svg><use href="#i-mic"/></svg> Registos por voz</span><span class="trust-item"><svg><use href="#i-shield"/></svg> Aprovação humana</span></div></div>
 
-    <section class="section" id="como-funciona"><div class="shell">
-      <div class="section-intro"><h2>Não precisas de fazer tudo sozinho. <span class="gold-deep">Precisas de saber o que vem a seguir.</span></h2><p>A Clara foi desenhada para transformar tarefas dispersas num percurso comercial mais simples. Desde o primeiro contacto até à próxima ação.</p></div>
-      <div class="flowchart" role="list"><article class="fc-step fc-start"><div class="fc-in"><p class="step-label">01 / ENTRADA</p><svg class="fc-ic"><use href="#i-bubble"/></svg><h3>A lead chega.</h3><p>A Clara identifica o contacto e inicia a qualificação dentro do guião aprovado por ti.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-data"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="9,1 99,1 91,99 1,99"/></svg><div class="fc-in"><p class="step-label">02 / CONTEXTO</p><svg class="fc-ic"><use href="#i-users"/></svg><h3>Tu recebes o resumo.</h3><p>O que a pessoa procura, o que já foi dito e qual deve ser o próximo passo.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-proc"><div class="fc-in"><p class="step-label">03 / PRIORIDADES</p><svg class="fc-ic"><use href="#i-calendar"/></svg><h3>O dia ganha ordem.</h3><p>Visitas, seguimentos e documentos pendentes organizados por importância.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-store"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M1 9A49 8 0 0 1 99 9V91A49 8 0 0 1 1 91Z"/><path class="fc-line" d="M1 9A49 8 0 0 0 99 9"/></svg><div class="fc-in"><p class="step-label">04 / REGISTO</p><svg class="fc-ic"><use href="#i-mic"/></svg><h3>A informação fica guardada.</h3><p>Falas ou escreves à Clara para reduzir o tempo dedicado a atualizar dados.</p></div></article></div>
-    </div></section>
-
-    <section class="section launch dark" id="lancamento" aria-labelledby="launch-title"><div class="shell launch-inner">
+    <section class="section launch" id="lancamento" aria-labelledby="launch-title"><div class="shell launch-inner">
       <p class="eyebrow">Lançamento · Semana de 1 de dezembro de 2026</p>
       <h2 id="launch-title">A tua nova forma de trabalhar <span class="gold">está quase a chegar.</span></h2>
       <p class="launch-lead">A Clara está a preparar-se para dar o próximo passo. E tu podes fazer parte dos primeiros consultores imobiliários a descobrir uma nova forma de gerir o dia, acompanhar oportunidades e organizar o negócio.</p>
@@ -431,6 +437,11 @@
         <div class="cd-box"><strong id="cd-s">00</strong><span>segundos</span></div>
       </div>
       <p class="cd-done" id="cd-done" hidden>O lançamento da Nº5 Clara começou.</p>
+    </div></section>
+
+    <section class="section" id="como-funciona"><div class="shell">
+      <div class="section-intro"><h2>Não precisas de fazer tudo sozinho. <span class="gold-deep">Precisas de saber o que vem a seguir.</span></h2><p>A Clara foi desenhada para transformar tarefas dispersas num percurso comercial mais simples. Desde o primeiro contacto até à próxima ação.</p></div>
+      <div class="flowchart" role="list"><article class="fc-step fc-start"><div class="fc-in"><p class="step-label">01 / ENTRADA</p><svg class="fc-ic"><use href="#i-bubble"/></svg><h3>A lead chega.</h3><p>A Clara identifica o contacto e inicia a qualificação dentro do guião aprovado por ti.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-data"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="9,1 99,1 91,99 1,99"/></svg><div class="fc-in"><p class="step-label">02 / CONTEXTO</p><svg class="fc-ic"><use href="#i-users"/></svg><h3>Tu recebes o resumo.</h3><p>O que a pessoa procura, o que já foi dito e qual deve ser o próximo passo.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-proc"><div class="fc-in"><p class="step-label">03 / PRIORIDADES</p><svg class="fc-ic"><use href="#i-calendar"/></svg><h3>O dia ganha ordem.</h3><p>Visitas, seguimentos e documentos pendentes organizados por importância.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-store"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M1 9A49 8 0 0 1 99 9V91A49 8 0 0 1 1 91Z"/><path class="fc-line" d="M1 9A49 8 0 0 0 99 9"/></svg><div class="fc-in"><p class="step-label">04 / REGISTO</p><svg class="fc-ic"><use href="#i-mic"/></svg><h3>A informação fica guardada.</h3><p>Falas ou escreves à Clara para reduzir o tempo dedicado a atualizar dados.</p></div></article></div>
     </div></section>
 
     <section class="section features" id="funcionalidades"><div class="shell">
