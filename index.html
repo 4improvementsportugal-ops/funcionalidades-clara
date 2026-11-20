@@ -345,6 +345,20 @@
 .offer-section .pre-reserva-aceito input{margin-top:2px;accent-color:var(--dourado)}
 .offer-section .cookie-option input{flex:none;width:20px;height:20px;margin:2px 0 0;accent-color:var(--tinta)}
 .offer-section .cookie-option input:focus-visible{outline:3px solid var(--cobalto);outline-offset:2px}
+
+  /* LANÇAMENTO */
+  .launch{position:relative;overflow:hidden;text-align:center;isolation:isolate}
+  .launch::before{content:"";position:absolute;z-index:-1;inset:auto -10% -70% -10%;height:100%;background:radial-gradient(ellipse,rgba(232,161,60,.16),transparent 68%)}
+  .launch-inner{max-width:860px}
+  .launch .eyebrow{justify-content:center}
+  .launch h2{margin:16px auto 22px;max-width:760px}
+  .launch-lead{max-width:680px;margin:0 auto 22px;font-size:clamp(16px,1.35vw,19px);line-height:1.7;color:#D4D3CB}
+  .launch-date{display:inline-block;margin:0 auto 10px;padding:9px 18px;border:1px solid rgba(232,161,60,.4);border-radius:999px;background:rgba(232,161,60,.08);color:var(--gold);font-weight:800;font-size:14px}
+  .launch-sub{margin:0 0 34px;color:#D4D3CB;font-size:16px}
+  .launch h3{font-size:clamp(26px,3vw,38px);margin:0 0 26px}
+  .launch-cta{background:#15803D;color:#fff;min-height:58px;padding:16px 30px;font-size:14px;box-shadow:0 14px 30px -14px rgba(31,157,85,.8)}.launch-cta:hover{background:#166534}
+  .launch-note{max-width:640px;margin:28px auto 0;font-size:12px;line-height:1.6;color:#9A9DA3}
+  @media(max-width:650px){.launch .eyebrow{text-align:center}.launch .eyebrow::before{display:none}.launch-cta{width:100%;padding:16px 18px;font-size:13px}.launch-date{font-size:13px}}
   </style>
 </head>
 <body>
@@ -394,6 +408,17 @@
     <section class="section" id="como-funciona"><div class="shell">
       <div class="section-intro"><h2>Não precisas de fazer tudo sozinho. <span class="gold-deep">Precisas de saber o que vem a seguir.</span></h2><p>A Clara foi desenhada para transformar tarefas dispersas num percurso comercial mais simples. Desde o primeiro contacto até à próxima ação.</p></div>
       <div class="flowchart" role="list"><article class="fc-step fc-start"><div class="fc-in"><p class="step-label">01 / ENTRADA</p><svg class="fc-ic"><use href="#i-bubble"/></svg><h3>A lead chega.</h3><p>A Clara identifica o contacto e inicia a qualificação dentro do guião aprovado por ti.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-data"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="9,1 99,1 91,99 1,99"/></svg><div class="fc-in"><p class="step-label">02 / CONTEXTO</p><svg class="fc-ic"><use href="#i-users"/></svg><h3>Tu recebes o resumo.</h3><p>O que a pessoa procura, o que já foi dito e qual deve ser o próximo passo.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-proc"><div class="fc-in"><p class="step-label">03 / PRIORIDADES</p><svg class="fc-ic"><use href="#i-calendar"/></svg><h3>O dia ganha ordem.</h3><p>Visitas, seguimentos e documentos pendentes organizados por importância.</p></div></article><div class="fc-arrow" aria-hidden="true"><svg viewBox="0 0 56 16" aria-hidden="true"><circle cx="4" cy="8" r="3.2" fill="currentColor"/><path d="M4 8H48M41 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><article class="fc-step fc-store"><svg class="fc-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M1 9A49 8 0 0 1 99 9V91A49 8 0 0 1 1 91Z"/><path class="fc-line" d="M1 9A49 8 0 0 0 99 9"/></svg><div class="fc-in"><p class="step-label">04 / REGISTO</p><svg class="fc-ic"><use href="#i-mic"/></svg><h3>A informação fica guardada.</h3><p>Falas ou escreves à Clara para reduzir o tempo dedicado a atualizar dados.</p></div></article></div>
+    </div></section>
+
+    <section class="section launch dark" id="lancamento" aria-labelledby="launch-title"><div class="shell launch-inner">
+      <p class="eyebrow">Lançamento · Semana de 1 de dezembro de 2026</p>
+      <h2 id="launch-title">A tua nova forma de trabalhar <span class="gold">está quase a chegar.</span></h2>
+      <p class="launch-lead">A Clara está a preparar-se para dar o próximo passo. E tu podes fazer parte dos primeiros consultores imobiliários a descobrir uma nova forma de gerir o dia, acompanhar oportunidades e organizar o negócio.</p>
+      <p class="launch-date">O lançamento está previsto para a semana de 1 de dezembro.</p>
+      <p class="launch-sub">Não precisas de esperar para garantir as condições de fundador.</p>
+      <h3>Garante já a tua pré-reserva por 27 €.</h3>
+      <a class="btn launch-cta" href="https://assistenteclara.numerocinco.pt/#reserva">Quero garantir a minha Clara por 27 €</a>
+      <p class="launch-note">As funcionalidades serão disponibilizadas de forma faseada, de acordo com o desenvolvimento e as condições de lançamento. A pré-reserva não ativa automaticamente o acesso.</p>
     </div></section>
 
     <section class="section features" id="funcionalidades"><div class="shell">
