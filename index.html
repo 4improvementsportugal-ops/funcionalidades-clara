@@ -501,10 +501,10 @@
      function activate(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1});panels.forEach(p=>p.hidden=p.id!=='panel-'+tab.dataset.tab)}
      tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;activate(tabs[next]);tabs[next].focus()})});
      const video=document.querySelector('#intro-video'), soundBtn=document.querySelector('#video-sound');
-     if(video&&soundBtn){video.muted=true;
+     if(video&&soundBtn){video.muted=true;video.addEventListener('play',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_play')},{once:true});
        if('IntersectionObserver' in window){new IntersectionObserver(([e])=>{if(e.isIntersecting)video.play().catch(()=>{});else video.pause()},{threshold:.4}).observe(video)}else video.play().catch(()=>{});
        const sync=()=>{soundBtn.hidden=!video.muted};video.addEventListener('volumechange',sync);sync();
-       soundBtn.addEventListener('click',()=>{video.muted=false;video.loop=false;video.currentTime=0;video.play().catch(()=>{})});}
+       soundBtn.addEventListener('click',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_som_ativado');video.muted=false;video.loop=false;video.currentTime=0;video.play().catch(()=>{})});}
      const cd=document.querySelector('#countdown');
      if(cd){const alvo=Date.UTC(2026,11,1,0,0,0),p=n=>String(n).padStart(2,'0'),el={d:document.querySelector('#cd-d'),h:document.querySelector('#cd-h'),m:document.querySelector('#cd-m'),s:document.querySelector('#cd-s')},fim=document.querySelector('#cd-done');
        const tick=()=>{let r=Math.max(0,Math.floor((alvo-Date.now())/1000));const d=Math.floor(r/86400);r-=d*86400;const h=Math.floor(r/3600);r-=h*3600;const m=Math.floor(r/60);const s=r-m*60;
@@ -513,5 +513,5 @@
        const id=setInterval(tick,1000);tick();}
    })();
   </script>
-</body>
+<script src="posthog.js" defer></script></body>
 </html>
