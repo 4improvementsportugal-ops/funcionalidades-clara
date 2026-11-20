@@ -359,6 +359,15 @@
   .launch-cta{background:#15803D;color:#fff;min-height:58px;padding:16px 30px;font-size:14px;box-shadow:0 14px 30px -14px rgba(31,157,85,.8)}.launch-cta:hover{background:#166534}
   .launch-note{max-width:640px;margin:28px auto 0;font-size:12px;line-height:1.6;color:#9A9DA3}
   @media(max-width:650px){.launch .eyebrow{text-align:center}.launch .eyebrow::before{display:none}.launch-cta{width:100%;padding:16px 18px;font-size:13px}.launch-date{font-size:13px}}
+
+  /* cronómetro */
+  .countdown{display:flex;justify-content:center;gap:clamp(8px,1.6vw,16px);margin:30px auto 30px}
+  .cd-box{min-width:clamp(70px,11vw,108px);padding:clamp(14px,2vw,22px) 10px clamp(12px,1.6vw,18px);border-radius:18px;background:linear-gradient(160deg,#222730,#171a20);border:1px solid rgba(232,161,60,.3);box-shadow:0 18px 34px -22px #000,inset 0 1px 0 rgba(255,255,255,.05)}
+  .cd-box strong{display:block;font:800 clamp(34px,5.6vw,62px)/1 var(--display);letter-spacing:-.03em;color:var(--gold);font-variant-numeric:tabular-nums}
+  .cd-box span{display:block;margin-top:9px;font:700 clamp(9px,1vw,11px)/1 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#B5B6B6}
+  .cd-done{margin:26px 0;font:800 22px var(--display);color:var(--gold)}.cd-done[hidden]{display:none}
+  .launch-sub{margin-top:6px}
+  @media(max-width:400px){.cd-box{min-width:0;flex:1;padding-inline:4px}.cd-box span{letter-spacing:.08em}}
   </style>
 </head>
 <body>
@@ -415,9 +424,15 @@
       <h2 id="launch-title">A tua nova forma de trabalhar <span class="gold">está quase a chegar.</span></h2>
       <p class="launch-lead">A Clara está a preparar-se para dar o próximo passo. E tu podes fazer parte dos primeiros consultores imobiliários a descobrir uma nova forma de gerir o dia, acompanhar oportunidades e organizar o negócio.</p>
       <p class="launch-date">O lançamento está previsto para a semana de 1 de dezembro.</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Tempo que falta para o lançamento, a 1 de dezembro de 2026">
+        <div class="cd-box"><strong id="cd-d">00</strong><span>dias</span></div>
+        <div class="cd-box"><strong id="cd-h">00</strong><span>horas</span></div>
+        <div class="cd-box"><strong id="cd-m">00</strong><span>minutos</span></div>
+        <div class="cd-box"><strong id="cd-s">00</strong><span>segundos</span></div>
+      </div>
+      <p class="cd-done" id="cd-done" hidden>O lançamento da Nº5 Clara começou.</p>
       <p class="launch-sub">Não precisas de esperar para garantir as condições de fundador.</p>
       <h3>Garante já a tua pré-reserva por 27 €.</h3>
-      <a class="btn launch-cta" href="https://assistenteclara.numerocinco.pt/#reserva">Quero garantir a minha Clara por 27 €</a>
       <p class="launch-note">As funcionalidades serão disponibilizadas de forma faseada, de acordo com o desenvolvimento e as condições de lançamento. A pré-reserva não ativa automaticamente o acesso.</p>
     </div></section>
 
@@ -478,6 +493,12 @@
        if('IntersectionObserver' in window){new IntersectionObserver(([e])=>{if(e.isIntersecting)video.play().catch(()=>{});else video.pause()},{threshold:.4}).observe(video)}else video.play().catch(()=>{});
        const sync=()=>{soundBtn.hidden=!video.muted};video.addEventListener('volumechange',sync);sync();
        soundBtn.addEventListener('click',()=>{video.muted=false;video.loop=false;video.currentTime=0;video.play().catch(()=>{})});}
+     const cd=document.querySelector('#countdown');
+     if(cd){const alvo=Date.UTC(2026,11,1,0,0,0),p=n=>String(n).padStart(2,'0'),el={d:document.querySelector('#cd-d'),h:document.querySelector('#cd-h'),m:document.querySelector('#cd-m'),s:document.querySelector('#cd-s')},fim=document.querySelector('#cd-done');
+       const tick=()=>{let r=Math.max(0,Math.floor((alvo-Date.now())/1000));const d=Math.floor(r/86400);r-=d*86400;const h=Math.floor(r/3600);r-=h*3600;const m=Math.floor(r/60);const s=r-m*60;
+         el.d.textContent=p(d);el.h.textContent=p(h);el.m.textContent=p(m);el.s.textContent=p(s);
+         if(alvo-Date.now()<=0){cd.hidden=true;fim.hidden=false;clearInterval(id)}};
+       const id=setInterval(tick,1000);tick();}
    })();
   </script>
 </body>
