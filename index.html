@@ -390,6 +390,13 @@
   .advanced-card .iconbox{background:#F8E9CF;color:var(--goldDeep)}
   .advanced-card p{color:#62636a}
   .advanced .plan{color:var(--goldDeep);border-color:rgba(180,118,26,.45);background:#FBF1DD}
+
+  /* botão de pré-reserva: aparece quando o vídeo chega a 1 minuto */
+  .video-cta{text-align:center;margin-top:30px;animation:ctaIn .5s ease both}.video-cta[hidden]{display:none}
+  .video-cta-btn{background:#15803D;color:#fff;min-height:58px;padding:16px 34px;font-size:15px;box-shadow:0 14px 30px -14px rgba(31,157,85,.8)}.video-cta-btn:hover{background:#166534}
+  @keyframes ctaIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @media(max-width:650px){.video-cta-btn{width:100%;padding:16px 18px;font-size:14px}}
+  @media(prefers-reduced-motion:reduce){.video-cta{animation:none}}
   </style>
 </head>
 <body>
@@ -471,6 +478,7 @@
     <section class="section demo" id="demonstracao" aria-labelledby="video-title"><div class="shell">
       <div class="demo-header"><div class="section-intro"><h2 id="video-title">Menos explicações. <span class="gold">Mais clareza no dia a dia.</span></h2><p>Vê como a Nº5 Clara ajuda os profissionais do imobiliário a organizar contactos, acompanhar oportunidades e ganhar tempo.</p><p class="video-hint"><strong>Ativa o som</strong> para ouvir o vídeo com voz.</p></div></div>
       <div class="video-frame"><video id="intro-video" controls muted playsinline autoplay loop preload="auto" poster="assets/n5-clara-poster.jpg" aria-label="Vídeo de apresentação da Nº5 Clara"><source src="assets/n5-clara.mp4" type="video/mp4">O teu navegador não suporta vídeo.</video><button type="button" class="video-sound" id="video-sound" hidden>Ativar som</button></div>
+      <div class="video-cta" id="video-cta" hidden><a class="btn video-cta-btn" id="video-cta-btn" href="https://buy.stripe.com/8x2fZjalbfgP4rZcaqgrS0b">Quero fazer a minha pré-reserva</a></div>
     </div></section>
 
     <section class="section advanced" id="avancadas"><div class="shell"><div class="section-intro"><h2>Para quem quer levar a Clara <span class="gold">ainda mais longe.</span></h2><p>Capacidades avançadas previstas para consultores que precisam de integração com outras ferramentas, campanhas e chamadas.</p></div>
@@ -501,7 +509,7 @@
      function activate(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1});panels.forEach(p=>p.hidden=p.id!=='panel-'+tab.dataset.tab)}
      tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;activate(tabs[next]);tabs[next].focus()})});
      const video=document.querySelector('#intro-video'), soundBtn=document.querySelector('#video-sound');
-     if(video&&soundBtn){video.muted=true;video.addEventListener('play',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_play')},{once:true});
+     if(video&&soundBtn){const cta=document.querySelector('#video-cta'),ctaBtn=document.querySelector('#video-cta-btn');if(cta){video.addEventListener('timeupdate',()=>{if(cta.hidden&&video.currentTime>=60){cta.hidden=false;window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_cta_visivel')}});ctaBtn&&ctaBtn.addEventListener('click',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_cta_clique')})}video.muted=true;video.addEventListener('play',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_play')},{once:true});
        if('IntersectionObserver' in window){new IntersectionObserver(([e])=>{if(e.isIntersecting)video.play().catch(()=>{});else video.pause()},{threshold:.4}).observe(video)}else video.play().catch(()=>{});
        const sync=()=>{soundBtn.hidden=!video.muted};video.addEventListener('volumechange',sync);sync();
        soundBtn.addEventListener('click',()=>{window.N5Posthog&&window.N5Posthog.track('funcionalidades_video_som_ativado');video.muted=false;video.loop=false;video.currentTime=0;video.play().catch(()=>{})});}
